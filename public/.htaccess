@@ -1,0 +1,11 @@
+# Permitir acesso ao conteúdo da pasta public/
+<Directory "/app/public">
+    AllowOverride All
+    Require all granted
+</Directory>
+
+# Forçar o Apache a redirecionar para o index.php
+RewriteEngine On
+RewriteBase /
+RewriteRule ^$ index.php [L]
+RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]

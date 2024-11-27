@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 public/
+web: python3 -m http.server $PORT
