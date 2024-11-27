@@ -14,3 +14,11 @@ RewriteBase /
 RewriteRule ^$ index.php [L]
 RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]
 DirectoryIndex index.php index.html index.htm
+# Habilita reescrita de URL
+RewriteEngine On
+
+# Define o arquivo de entrada (se necessário)
+DirectoryIndex index.php index.html
+
+# Outras configurações necessárias
+php_flag display_errors On
