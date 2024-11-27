@@ -12,4 +12,5 @@
 RewriteEngine On
 RewriteBase /
 RewriteRule ^$ index.php [L]
-RewriteRule ^([a-zA-Z0-9-_/]+)$ index.html [L]
+RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]
+DirectoryIndex index.php index.html index.htm
