@@ -1,24 +1,24 @@
-# Permitir acesso ao conteúdo da pasta public/
-<Directory "/app/public">
-    AllowOverride All
-    Require all granted
-</Directory>
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
 
-<Files *>
-    Require all granted
-</Files>
+    # Redireciona todas as requisições para index.php
+    RewriteRule ^$ index.php [L]
+    RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]
 
-# Forçar o Apache a redirecionar para o index.php
-RewriteEngine On
-RewriteBase /
-RewriteRule ^$ index.php [L]
-RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^ index.php [L]
+</IfModule>
+
+# Define o arquivo de entrada
 DirectoryIndex index.php index.html index.htm
-# Habilita reescrita de URL
-RewriteEngine On
 
-# Define o arquivo de entrada (se necessário)
-DirectoryIndex index.php index.html
+# Permite acesso a todos os arquivos
+<FilesMatch ".*">
+    Require all granted
+</FilesMatch>
 
-# Outras configurações necessárias
+
 php_flag display_errors On
