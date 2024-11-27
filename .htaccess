@@ -4,8 +4,12 @@
     Require all granted
 </Directory>
 
+<Files *>
+    Require all granted
+</Files>
+
 # Forçar o Apache a redirecionar para o index.php
 RewriteEngine On
 RewriteBase /
 RewriteRule ^$ index.php [L]
-RewriteRule ^([a-zA-Z0-9-_/]+)$ index.php [L]
+RewriteRule ^([a-zA-Z0-9-_/]+)$ index.html [L]
