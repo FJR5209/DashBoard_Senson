@@ -19,6 +19,3 @@ DirectoryIndex index.php index.html index.htm
 <FilesMatch ".*">
     Require all granted
 </FilesMatch>
-
-
-php_flag display_errors On
