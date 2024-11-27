@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suporte</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Incluindo o SweetAlert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-brand">Suporte</div>
+    </nav>
+
+    <div class="tracker-block">
+        <div class="tracker-block__icon">
+            <img src="apoio-suporte.png" alt="Ícone">
+        </div>
+        <div class="tracker-block__content">
+            <h4>Entre em Contato</h4>
+            <h2>Envie-nos uma mensagem</h2>
+        </div>
+    </div>
+
+    <div class="form-container">
+        <form id="support-form">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" placeholder="Digite seu nome" required>
+
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+
+            <label for="message">Mensagem</label>
+            <textarea id="message" name="message" placeholder="Digite sua mensagem" rows="5" required></textarea>
+
+            <button type="submit" class="submit-btn">Enviar</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Suporte. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Incluindo o Script -->
+    <script src="scripts.js"></script>
+</body>
+</html>

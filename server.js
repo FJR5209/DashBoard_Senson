@@ -1,17 +1,28 @@
 const express = require('express');
 const nodemailer = require('nodemailer');
-const cors = require('cors'); // Para permitir CORS, se necessário
+const cors = require('cors');
+
 const app = express();
 const port = 3001;
 
+// Habilitar CORS
 app.use(cors());
 
-// Configuração do transportador de e-mail (substitua com suas credenciais reais)
+// Configuração do transportador de e-mail
 const transporter = nodemailer.createTransport({
-    service: 'gmail', // Ou qualquer outro serviço de e-mail
+    service: 'gmail',
     auth: {
         user: 'suportetcc5209@gmail.com', // Seu e-mail
-        pass: 'kual aods ikgt msww' // Sua senha do e-mail ou app password se for o Gmail
+        pass: 'kual aods ikgt msww' // Senha específica para aplicativos
+    }
+});
+
+// Validação da configuração do transportador
+transporter.verify((error, success) => {
+    if (error) {
+        console.error('Erro ao configurar o transporte de e-mail:', error);
+    } else {
+        console.log('Transportador de e-mail configurado com sucesso');
     }
 });
 
@@ -19,8 +30,8 @@ const transporter = nodemailer.createTransport({
 app.get('/send-email', (req, res) => {
     const temperature = req.query.temperature; // Obtém a temperatura do query string
 
-    if (!temperature) {
-        return res.status(400).json({ error: 'Temperatura não fornecida' });
+    if (!temperature || isNaN(temperature)) {
+        return res.status(400).json({ error: 'Temperatura inválida ou não fornecida' });
     }
 
     const mailOptions = {
