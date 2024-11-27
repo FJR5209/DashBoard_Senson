@@ -1,22 +1,23 @@
 document.getElementById("support-form").addEventListener("submit", function(event) {
     event.preventDefault(); // Impede o envio convencional do formulário
 
-    // Desabilita a validação HTML do formulário (para evitar o comportamento padrão)
+    // Desabilita a validação HTML do formulário
     const form = document.getElementById("support-form");
     form.noValidate = true;
 
     const formData = new FormData(event.target);
 
-    // Log para verificar os dados que estão sendo enviados
-    console.log("Form Data: ", formData);
+    // Verifique se os dados do FormData estão corretos
+    for (let [key, value] of formData.entries()) {
+        console.log(`${key}: ${value}`);
+    }
 
     // Envia via fetch com método POST
-    fetch('send_message.php', {  // Ajuste a URL para o caminho correto
+    fetch('http://localhost:8000/send_message.php', {  // Ajuste a URL para o caminho correto
         method: 'POST',
         body: formData,
     })
     .then(response => {
-        // Verifica se a resposta do servidor é ok
         if (!response.ok) {
             throw new Error('Erro na resposta da requisição');
         }
@@ -45,7 +46,6 @@ document.getElementById("support-form").addEventListener("submit", function(even
         }
     })
     .catch(error => {
-        // Caso ocorra um erro com o fetch
         Swal.fire({
             icon: 'error',
             title: 'Erro',

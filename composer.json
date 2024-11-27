@@ -1,8 +1,9 @@
 {
-    "name": "fredsonjunior/dashboardsensor", 
-    "description": "Aplicativo para monitoramento de sensores",
+    "name": "dashboard-sensor/app",
+    "description": "Aplicação de Suporte",
     "require": {
-      "php": "^8.0"
+      "php": "^7.4",
+      "phpmailer/phpmailer": "^6.5"
     }
   }
   
